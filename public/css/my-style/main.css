@@ -1,0 +1,19 @@
+body {
+  font-family: "Fira Code";
+}
+
+.nav-container {
+  background-color: rgb(107, 109, 240);
+}
+.nav-container .dark-icon {
+  transition: 0.2s;
+}
+.nav-container .dark-icon:active {
+  transform: scale(0.75);
+}
+
+.bg-header {
+  background: url("/img/blog-header.jpg") center center no-repeat;
+  filter: brightness(80%);
+  background-attachment: fixed;
+}

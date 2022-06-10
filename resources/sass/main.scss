@@ -1,0 +1,21 @@
+// Variable
+$main-color: rgb(107, 109, 240);
+body {
+    font-family: 'Fira Code';
+}
+
+.nav-container {
+    background-color: $main-color;
+    .dark-icon {
+        transition: 0.2s;
+        &:active {
+            transform: scale(0.75);
+        }
+    }
+}
+
+.bg-header {
+    background: url('/img/blog-header.jpg') center center no-repeat;
+    filter: brightness(80%);
+    background-attachment: fixed;
+}
