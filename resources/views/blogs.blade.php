@@ -4,7 +4,7 @@
     All Blogs
 @endsection
 
-@section('main')
+@section('content')
     <div class="">
         <img src="{{ asset('img/black-bg.jpg') }}" alt="" width="100%">
         <div class=" absolute top-[150px] left-[40%] text-white">

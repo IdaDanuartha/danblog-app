@@ -22,6 +22,7 @@
         "tailwindcss": "^3.1.1"
     },
     "dependencies": {
-        "froala-editor": "^4.0.12"
+        "froala-editor": "^4.0.12",
+        "tw-elements": "^1.0.0-alpha12"
     }
 }

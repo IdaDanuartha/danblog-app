@@ -18,10 +18,6 @@
     {{-- My Style --}}
     <link href="{{ asset('css/my-style/main.css') }}" rel="stylesheet">
 
-    {{-- Froala Editor --}}
-    <link href="{{ asset('../node_modules/froala-editor/css/froala_editor.pkgd.min.css') }}" rel="stylesheet"
-        type="text/css" />
-
     {{-- Owl Carousel --}}
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
@@ -30,17 +26,13 @@
 <body class="dark:bg-gray-700">
     @include('partials.components.navbar')
 
-    @yield('main')
+    @yield('content')
 
     @include('partials.components.footer')
 
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    {{-- Froala Editor --}}
-    <script type="text/javascript" src="{{ asset('../node_modules/froala-editor/js/froala_editor.pkgd.min.js') }}">
-    </script>
 
     {{-- My Script --}}
     <script src="{{ asset('js/my-script/main.js') }}"></script>

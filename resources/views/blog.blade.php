@@ -4,11 +4,11 @@
     Detail Article
 @endsection
 
-@section('main')
-    <div class="pt-[50px] sm:pt-[80px] md:pt-[100px] p-2 sm:p-5 md:p-10">
+@section('content')
+    <div class="pt-[50px] sm:pt-[80px] md:pt-[100px] p-0 sm:p-3 md:p-10">
         <div class="flex justify-center">
             <div
-                class="mr-7 basis-full md:basis-3/4 dark:bg-gray-800 dark:text-white rounded-lg shadow-lg border border-gray-100 dark:border-0 mt-[50px] p-7">
+                class="mr-7 basis-full lg:basis-2/3 xl:basis-3/4 dark:bg-gray-800 dark:text-white sm:rounded-lg sm:shadow-lg sm:border sm:border-gray-200 dark:border-0 mt-[50px] p-7">
                 <div class="flex border-b border-gray-400 pb-5 mb-10">
                     <img class="rounded-full" width="50" src="https://picsum.photos/100" alt="">
                     <div class="ml-5 items-center">
@@ -18,17 +18,19 @@
                 </div>
 
                 <div>
-                    <h1 class="uppercase font-semibold text-4xl my-8">Bagaimana Nasib Para Programmer di Masa Depan?</h1>
+                    <h1 class="uppercase font-semibold text-2xl sm:text-3xl md:text-4xl my-8">Bagaimana Nasib Para Programmer
+                        di Masa
+                        Depan?</h1>
                     <img class="rounded-md" src="https://picsum.photos/1200/600" alt="">
                     <div>
                         <div class="mt-5 mb-12">
                             <a href="#comments" class="mr-5"><i
                                     class="fa-solid fa-comment-dots text-indigo-500"></i> 5
-                                Comments</a>
+                                Komentar</a>
                             <a href="#" class="text-indigo-600">#technology</a>
                         </div>
                         @for ($i = 0; $i < 5; $i++)
-                            <p>
+                            <p class="text-sm md:text-md">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, officiis animi, veritatis
                                 doloremque sunt alias iure laudantium ex maiores odio ipsum deleniti, beatae enim tenetur
                                 facere
@@ -46,50 +48,75 @@
                 </div>
             </div>
 
-            <div
-                class="hidden md:block bg-white basis-1/4 dark:bg-gray-800 dark:text-white rounded-lg border border-gray-100 dark:border-0 shadow-xl mt-[50px] p-7">
-                Lorem ipsum
-                dolor sit
-                amet consectetur
-                adipisicing elit. Iste sequi molestiae
-                quas
-                ea,
-                tempora laborum illo
-                tempore nam animi quo? In porro facilis iure eaque impedit ratione tempora ipsa, natus dolorum, assumenda
-                placeat error earum vero recusandae, saepe commodi magni. Odio quibusdam necessitatibus provident similique,
-                qui, ipsum repudiandae id, aspernatur amet et iusto dolore omnis maxime possimus. Earum odit animi ex quidem
-                repudiandae sapiente totam molestiae perferendis quia a exercitationem mollitia recusandae, nam eaque harum
-                quaerat quasi tempora odio tempore inventore aliquam. Ad repudiandae quos ullam eum fugit autem sit ea
-                quisquam
-                corrupti temporibus placeat ipsum odio, distinctio facere magni?
+            <div class="hidden lg:block lg:basis-1/3 xl:basis-1/4 dark:text-white mt-[50px]">
+                <div class="mb-20 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 p-7 dark:border-0 shadow-xl">
+                    <h1 class="border-b border-gray-300 pb-1 mb-3    font-semibold text-xl"><i
+                            class="fa-solid fa-newspaper mr-2"></i>Artikel Terkait</h1>
+                    <div>
+
+                        @for ($i = 0; $i < 4; $i++)
+                            <a href="#"
+                                class="flex flex-col items-center bg-white rounded-lg mb-3 border shadow-md md:flex-row max-w-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <img class="object-cover w-full rounded-t-lg h-auto md:rounded-none md:rounded-l-lg"
+                                    src="https://picsum.photos/200" alt="">
+                                <div class="flex flex-col justify-start py-1 px-2 leading-normal">
+                                    <h5 class="mb-2 text-sm font-medium tracking-tight text-gray-900 dark:text-white">
+                                        Noteworthy
+                                        technology acquisitions 2021<h5>
+                                </div>
+                            </a>
+                        @endfor
+
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 p-7 dark:border-0 shadow-xl">
+                    <h1 class="border-b border-gray-300 pb-1 mb-3    font-semibold text-xl"><i
+                            class="fa-solid fa-newspaper mr-2"></i>Pilihan Editor</h1>
+                    <div>
+
+                        @for ($i = 0; $i < 4; $i++)
+                            <a href="#"
+                                class="flex flex-col items-center bg-white rounded-lg mb-3 border shadow-md md:flex-row max-w-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <img class="object-cover w-full rounded-t-lg h-auto md:rounded-none md:rounded-l-lg"
+                                    src="https://picsum.photos/200" alt="">
+                                <div class="flex flex-col justify-start py-1 px-2 leading-normal">
+                                    <h5 class="mb-2 text-sm font-medium tracking-tight text-gray-900 dark:text-white">
+                                        Noteworthy
+                                        technology acquisitions 2021<h5>
+                                </div>
+                            </a>
+                        @endfor
+
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="mt-20">
+        <div class="mt-20 p-3 md:p-0">
             <h2 class="mb-5 font-medium dark:text-white"><i class="fa-solid fa-comment mr-2 text-xl text-indigo-500"></i>
-                Leave a Comment
+                Tinggalkan Komentar
             </h2>
             <form action="" method="POST">
                 @csrf
                 <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
                     <div class="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
-                        <label for="comment" class="sr-only">Your comment</label>
+                        <label for="comment" class="sr-only">Tulis komentar disini...</label>
                         <textarea id="comment" rows="6"
                             class="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                            placeholder="Write a comment..." required></textarea>
+                            placeholder="Tulis komentar disini..." required></textarea>
                     </div>
                     <div class="py-2 px-3 border-t dark:border-gray-600">
                         <button type="submit"
                             class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                            Post comment
+                            Posting Komentar
                         </button>
                     </div>
                 </div>
             </form>
 
             <div class="border-t border-gray-300 mt-10 pt-10">
-                <p class="dark:text-white"><i class="fa-solid fa-comments mr-2 text-indigo-500"></i> This post has 5
-                    comments</p>
+                <p class="dark:text-white"><i class="fa-solid fa-comments mr-2 text-indigo-500"></i> Postingan ini punya 5
+                    komentar</p>
 
                 @for ($i = 0; $i < 5; $i++)
                     <div class="w-full dark:text-white dark:border-gray-500 flex mt-8 border-b pb-5 mb-5 border-gray-200">

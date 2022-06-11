@@ -4,6 +4,6 @@
     404 Page Not Found
 @endsection
 
-@section('main')
+@section('content')
     <h1>404 Page Not Found</h1>
 @endsection

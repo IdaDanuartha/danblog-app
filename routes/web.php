@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FrontendController as AdminFrontendController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(FrontendController::class)->group(function() {
-    Route::get('/', 'homeView');
+    Route::redirect('/', '/home');
+
+    Route::get('/home', 'homeView');
     Route::get('/blogs', 'blogsView');
     Route::get('/blog/{category}/{slug}', 'blogDetail');
+});
+
+Route::controller(AdminFrontendController::class)->group(function() {
+    Route::redirect('/admin', '/admin/analytics');
+
+    Route::get('/admin/analytics', 'analyticsView');
+    Route::get('/admin/posts', 'postsView');
+    Route::get('/admin/post/{slug}', 'postPreview');
+
+    Route::get('/admin/categories', 'categoriesView');
 });
 
 

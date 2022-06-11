@@ -4,7 +4,7 @@
     Home Page
 @endsection
 
-@section('main')
+@section('content')
     <div>
         <header class="bg-header flex items-center justify-center h-screen pb-12 -z-10">
             <div class="mx-4 text-center md:p-8">
