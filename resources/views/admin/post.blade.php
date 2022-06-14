@@ -11,11 +11,11 @@
                 <img class="rounded-full" width="50" src="https://picsum.photos/100" alt="">
                 <div class="ml-5 items-center">
                     <h3 class="text-lg font-medium">{{ $post->author->username }}</h3>
-                    <p class="text-sm"><i class="fa-solid fa-calendar mr-1 text-indigo-500"></i>
-                        {{ $post->created_at->format('d M Y') }}</p>
+                    <p class="text-sm"><i class="fa-solid fa-clock mr-1 text-indigo-500"></i>
+                        {{ $post->created_at->format('M d, Y') }}</p>
                 </div>
             </div>
-            <img class="rounded" src="/uploads/posts/{{ $post->image }}" alt="">
+            <img class="rounded w-full h-auto" src="/uploads/posts/{{ $post->image }}" alt="">
             <div class="flex flex-col sm:flex-row justify-between mt-5">
                 <div class="flex mb-7 sm:mb-0">
                     <p class="mr-5 font-semibold text-lg"><i class="fa-solid fa-comments mr-2"></i> 3 Komentar</p>

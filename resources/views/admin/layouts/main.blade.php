@@ -43,7 +43,7 @@
         <div class="flex flex-col md:flex-row">
             @include('admin.components.sidebar')
 
-            <section>
+            <section class="w-full">
                 <div id="main" class="main-content flex-1 mt-12 md:mt-2 pb-24 md:pb-5">
 
                     <div class="bg-gray-800 pt-3">

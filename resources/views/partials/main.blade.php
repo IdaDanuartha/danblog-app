@@ -20,6 +20,10 @@
     {{-- My Style --}}
     <link href="{{ asset('css/my-style/main.css') }}" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('/js/trix.js') }}"></script>
+
     {{-- Owl Carousel --}}
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
@@ -38,6 +42,9 @@
 
     {{-- My Script --}}
     <script src="{{ asset('js/my-script/main.js') }}"></script>
+
+    {{-- Tailwind Elements --}}
+    <script src="{{ asset('js/index.min.js') }}"></script>
 
     {{-- Sweetalert2 --}}
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>

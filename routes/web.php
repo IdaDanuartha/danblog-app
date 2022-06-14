@@ -3,8 +3,10 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\FrontendController as AdminFrontendController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,15 +25,7 @@ Route::controller(FrontendController::class)->group(function() {
 
     Route::get('/home', 'homeView')->name('home');
     Route::get('/blogs', 'blogsView');
-    Route::get('/blog/{category}/{slug}', 'blogDetail');
-});
-
-Route::controller(AdminFrontendController::class)->group(function() {
-    Route::middleware(['auth', 'isAdmin'])->group(function() {
-        Route::redirect('/admin', '/admin/analytics');
-
-        Route::get('/admin/analytics', 'analyticsView');
-    });
+    Route::get('/blog/{category_slug}/{post_slug}', 'blogDetail');
 });
 
 Route::controller(AuthController::class)->group(function() {
@@ -40,9 +34,27 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/logout', 'logout');
 });
 
-Route::resource('/admin/posts', PostController::class);
+Route::middleware(['auth', 'isAdmin'])->group(function() {
+    Route::redirect('/admin', '/admin/analytics');
 
-Route::resource('/admin/categories', CategoryController::class);
+    Route::controller(AdminFrontendController::class)->group(function() {
+        Route::get('/admin/analytics', 'analyticsView');
+        Route::get('/admin/profile', 'profileView');
+        Route::get('/admin/settings', 'settingsView');
+    });
+
+    Route::resource('/admin/posts', PostController::class);
+    Route::resource('/admin/categories', CategoryController::class);
+    
+    Route::put('/admin/settings/{id}', [UserController::class, 'updateUser']);
+});
+
+Route::controller(CommentController::class)->group(function() {
+    Route::middleware('auth')->group(function() {
+        Route::post('/comments/create', 'addComment');
+        Route::delete('/comments/delete/{id}', 'deleteComment');
+    });
+});
 
 
 Route::fallback(function () {
