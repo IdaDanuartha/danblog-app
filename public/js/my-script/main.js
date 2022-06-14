@@ -24,6 +24,7 @@ $(document).ready(function() {
 // DarkMode Toggle
 let darkMode = localStorage.getItem("dark-theme");
 const darkModeToggle = document.querySelector("#darkmode-icon");
+const darkModeTooltip = document.getElementById("dark-light-mode-tooltip");
 
 const enabledDarkMode = () => {
     document.documentElement.classList.add("dark");
@@ -47,14 +48,13 @@ darkModeToggle.addEventListener("click", () => {
         enabledDarkMode();
         darkModeToggle.classList.add("fa-sun");
         darkModeToggle.classList.remove("fa-moon");
-        console.log(darkMode);
+        darkModeTooltip.textContent = "Light Mode";
+        // console.log(darkMode);
     } else {
         disabledDarkMode();
         darkModeToggle.classList.remove("fa-sun");
         darkModeToggle.classList.add("fa-moon");
-        console.log(darkMode);
+        darkModeTooltip.textContent = "Dark Mode";
+        // console.log(darkMode);
     }
 });
-
-// Froala editor script
-var editor = new FroalaEditor("#example");

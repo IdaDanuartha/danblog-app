@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\FrontendController as AdminFrontendController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,21 +21,28 @@ use Illuminate\Support\Facades\Route;
 Route::controller(FrontendController::class)->group(function() {
     Route::redirect('/', '/home');
 
-    Route::get('/home', 'homeView');
+    Route::get('/home', 'homeView')->name('home');
     Route::get('/blogs', 'blogsView');
     Route::get('/blog/{category}/{slug}', 'blogDetail');
 });
 
 Route::controller(AdminFrontendController::class)->group(function() {
-    Route::redirect('/admin', '/admin/analytics');
+    Route::middleware(['auth', 'isAdmin'])->group(function() {
+        Route::redirect('/admin', '/admin/analytics');
 
-    Route::get('/admin/analytics', 'analyticsView');
-    Route::get('/admin/posts', 'postsView');
-    Route::get('/admin/post/{slug}', 'postPreview');
-
-    Route::get('/admin/categories', 'categoriesView');
+        Route::get('/admin/analytics', 'analyticsView');
+    });
 });
 
+Route::controller(AuthController::class)->group(function() {
+    Route::post('/signup', 'store');
+    Route::post('/login', 'auth');
+    Route::get('/logout', 'logout');
+});
+
+Route::resource('/admin/posts', PostController::class);
+
+Route::resource('/admin/categories', CategoryController::class);
 
 
 Route::fallback(function () {

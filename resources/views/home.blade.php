@@ -8,8 +8,8 @@
     <div>
         <header class="bg-header flex items-center justify-center h-screen pb-12 -z-10">
             <div class="mx-4 text-center md:p-8">
-                <h1 class="text-5xl text-gray-800 uppercase font-semibold">
-                    Welcome To My Blog
+                <h1 class="text-5xl text-gray-700 uppercase font-semibold">
+                    Welcome To My <span class="text-indigo-600">Blog</span>
                 </h1>
                 <p class="text-lg">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident neque earum voluptates autem.
@@ -17,9 +17,17 @@
                 </p>
 
                 <div class="flex justify-center mt-5">
-                    <button type="button"
-                        class="focus:outline-none text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-md px-6 py-3 mb-2 text-xl dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-900"
-                        data-modal-toggle="authentication-modal">Log In</button>
+                    @guest
+                        <button type="button"
+                            class="focus:outline-none text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-md px-6 py-3 mb-2 text-xl dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-700"
+                            data-modal-toggle="authentication-modal">LOGIN</button>
+                    @endguest
+
+                    @auth
+                        <a href="/blogs"
+                            class="focus:outline-none text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-md px-6 py-3 mb-2 text-xl dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-700">Explore
+                            My Blogs</a>
+                    @endauth
 
                 </div>
             </div>

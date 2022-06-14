@@ -19,11 +19,30 @@
                     placeholder="Cari artikel disini...">
             </div>
             <button type="button"
-                class="mb-0 sm:mb-2 text-md focus:outline-none rounded-lg border focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                class="mb-0 sm:mb-2 text-md focus:outline-none rounded-lg border focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 hover:opacity-80"
+                data-tooltip-target="dark-light-mode-tooltip" data-tooltip-placement="bottom">
                 <i class="fa-solid fa-moon text-white py-2.5 px-3" id="darkmode-icon"></i>
             </button>
+            <div id="dark-light-mode-tooltip" role="tooltip"
+                class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Dark Mode
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+            @auth
+                <a href="/logout"
+                    class="mb-0 ml-2 sm:mb-2 text-md focus:outline-none rounded-lg border focus:z-10 focus:ring-4 
+                    hover:opacity-80 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    data-tooltip-target="logout-tooltip" data-tooltip-placement="bottom">
+                    <i class="fa-solid fa-right-from-bracket py-2.5 px-3 text-white"></i>
+                </a>
+                <div id="logout-tooltip" role="tooltip"
+                    class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Logout to your account
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            @endauth
             <button data-collapse-toggle="mobile-menu-3" type="button"
-                class="inline-flex items-center py-1 px-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ml-3"
+                class="inline-flex items-center py-1 px-3 text-sm text-white rounded-lg md:hidden hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ml-3"
                 aria-controls="mobile-menu-3" aria-expanded="false">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"

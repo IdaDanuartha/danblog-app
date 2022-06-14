@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- CSRF Token --}}
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
     <title>@yield('title')</title>
 
@@ -23,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 </head>
 
-<body class="dark:bg-gray-700">
+<body class="dark:bg-gray-700 overflow-x-hidden">
     @include('partials.components.navbar')
 
     @yield('content')
@@ -37,11 +39,41 @@
     {{-- My Script --}}
     <script src="{{ asset('js/my-script/main.js') }}"></script>
 
+    {{-- Sweetalert2 --}}
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+
     {{-- Owl Carousel --}}
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 
     {{-- Flowbite --}}
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 2500
+            })
+        @endif
+
+        @if (session('failed'))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "{{ session('failed') }}",
+                showConfirmButton: false,
+                timer: 2500
+            })
+        @endif
+
+        @if (session('status'))
+            Swal.fire("{{ session('status') }}")
+        @endif
+    </script>
+
 
 </body>
 

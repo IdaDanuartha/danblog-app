@@ -8,6 +8,8 @@
     <meta name="author" content="name">
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
+    {{-- CSRF Token --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Fontawesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -68,11 +70,35 @@
 
     {{-- My Script --}}
     <script src="{{ asset('js/my-script/admin.js') }}"></script>
+    <script src="{{ asset('js/my-script/post.js') }}"></script>
+
+    {{-- Sweetalert2 --}}
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
     {{-- Flowbite --}}
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
-    <script></script>
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 2500
+            })
+        @endif
+
+        @if (session('failed'))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "{{ session('failed') }}",
+                showConfirmButton: false,
+                timer: 2500
+            })
+        @endif
+    </script>
 
 
 </body>

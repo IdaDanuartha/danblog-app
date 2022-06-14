@@ -79,6 +79,6 @@ body {
 
 .bg-header {
   background: url("/img/blog-header.jpg") center center no-repeat;
-  filter: brightness(80%);
+  filter: brightness(85%);
   background-attachment: fixed;
 }

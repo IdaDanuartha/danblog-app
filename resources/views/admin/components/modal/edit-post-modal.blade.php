@@ -1,18 +1,19 @@
     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true"
+        id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true"
         data-bs-backdrop="static">
         <div class="modal-dialog modal-xl modal-dialog-scrollable relative w-auto pointer-events-none">
             <div
                 class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-gray-700 bg-clip-padding rounded-md outline-none text-current">
                 <div
                     class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                    <h5 class="text-xl font-semibold leading-normal text-white" id="createPostModal">
-                        Create New Post
+                    <h5 class="text-xl font-semibold leading-normal text-white" id="editPostModal">
+                        Edit Post
                     </h5>
                 </div>
                 <div class="modal-body relative p-4" id="create-post-data">
-                    <form action="/admin/posts" method="POST" enctype="multipart/form-data">
+                    <form action="/admin/posts/{{ $post->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="file-input-container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -20,7 +21,7 @@
                                         <label class="control-label text-white font-semibold text-lg"
                                             style="margin-bottom: 10px;">Upload
                                             Image</label>
-                                        <div class="preview-zone hidden">
+                                        <div class="preview-zone">
                                             <div class="box box-solid">
                                                 <div class="box-header with-border">
                                                     <div><b>Preview</b></div>
@@ -31,7 +32,9 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="box-body"></div>
+                                                <div class="box-body">
+                                                    <img src="/uploads/posts/{{ $post->image }}" alt="" width="200">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="dropzone-wrapper">
@@ -57,7 +60,7 @@
                                     class="block text-md font-semibold text-gray-900 dark:text-white mb-3">Title</label>
                                 <input type="text" id="title" name="title"
                                     class="title bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Title post...">
+                                    placeholder="Title post..." value="{{ $post->title }}">
                             </div>
                             @error('title')
                                 <p class="text-sm my-3 font-semibold text-red-600 dark:text-red-500">{{ $message }}</p>
@@ -72,15 +75,20 @@
                                 class="category bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 name="category_id">
                                 @foreach ($categories as $item)
-                                    <option value="{{ $item->id }}">{{ $item->category_name }}
-                                    </option>
+                                    @if (old('category_id', $post->category_id) == $item->id)
+                                        <option selected value="{{ $item->id }}">{{ $item->category_name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->category_name }}
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
                         <div class="dark:text-white">
                             <label for="" class="font-semibold text-md">Body</label>
                             <div style="margin-top: 10px;">
-                                <input id="body" type="hidden" name="body">
+                                <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
                                 <trix-editor input="body" placeholder="Write content here..."></trix-editor>
                             </div>
                         </div>
@@ -90,7 +98,8 @@
 
                         <div class="flex mt-5">
                             <div class="flex items-center h-5">
-                                <input checked id="status" aria-describedby="status-text" type="checkbox" name="status"
+                                <input @if ($post->status == 1) checked @endif id="status"
+                                    aria-describedby="status-text" type="checkbox" name="status"
                                     class="w-4 h-4 text-purple-600 bg-gray-100 rounded border-gray-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             </div>
                             <div class="ml-2 text-sm">
@@ -104,8 +113,8 @@
 
                         <div class="flex mt-5">
                             <div class="flex items-center h-5">
-                                <input id="recommended" aria-describedby="recommended-text" type="checkbox"
-                                    name="recommended"
+                                <input @if ($post->recommended == 1) checked @endif id="recommended"
+                                    aria-describedby="recommended-text" type="checkbox" name="recommended"
                                     class="w-4 h-4 text-purple-600 bg-gray-100 rounded border-gray-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             </div>
                             <div class="ml-2 text-sm">

@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "froala-editor": "^4.0.12",
+        "sweetalert2": "^11.4.17",
         "tw-elements": "^1.0.0-alpha12"
     }
 }
