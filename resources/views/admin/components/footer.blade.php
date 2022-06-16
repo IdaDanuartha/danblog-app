@@ -11,10 +11,7 @@
             <a href="/admin/posts" class="mr-4 hover:underline md:mr-6">Posts</a>
         </li>
         <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Categories</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline">Comments</a>
+            <a href="/admin/categories" class="mr-4 hover:underline md:mr-6">Categories</a>
         </li>
     </ul>
 </footer>

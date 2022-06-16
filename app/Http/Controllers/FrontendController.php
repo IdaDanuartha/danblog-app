@@ -7,13 +7,12 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
     public function homeView()
     {
-        return view('home', [
+        return view('home', [            
             'latest_articles' => Post::where('status', 1)->latest()->with(['category', 'author'])->take(6)->get()
         ]);
     }
@@ -21,7 +20,7 @@ class FrontendController extends Controller
     public function blogsView()
     {
         return view('blogs', [
-            'blogs' => Post::where('status', 1)->latest()->with(['category', 'author'])->get()
+            'blogs' => Post::where('status', 1)->filter(request(['query', 'category']))->latest()->with(['category', 'author'])->get()
         ]);
     }
 

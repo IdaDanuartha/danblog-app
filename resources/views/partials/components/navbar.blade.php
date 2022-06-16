@@ -5,7 +5,7 @@
             <img src="https://picsum.photos/100" class="rounded-full mr-3 h-6 sm:h-9" alt="My Logo">
         </a>
         <div class="flex md:order-2">
-            {{-- <div class="hidden relative mx-3 md:block">
+            <form action="/blogs" class="hidden relative mx-3 md:block">
                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg class="w-5 -mt-2 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -14,11 +14,13 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <input type="text" id="search-navbar"
+                @if(request('category')) <input type="hidden" name="category" value="{{ request('category') }}"> @endif
+                <input type="text" id="search-navbar" name="query"
                     class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Cari artikel disini...">
-            </div> --}}
-                       
+                <button type="submit" class="hidden"></button>
+            </form>
+
             <button type="button"
                 class="mb-0 sm:mb-2 text-md focus:outline-none rounded-lg border focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 hover:opacity-80"
                 data-tooltip-target="dark-light-mode-tooltip" data-tooltip-placement="bottom">

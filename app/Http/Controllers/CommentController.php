@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function detailComment($id)
+    {
+        return response()->json([
+            "data" => Comment::find($id)
+        ]);
+    }
+
     public function addComment(CommentRequest $request)
     {
         $post_id = $request->post_id;
-        $user_comment = $request->user_comment;
 
         $check_post = Post::where('id', $post_id)->first();
 
@@ -24,6 +30,15 @@ class CommentController extends Controller
         } else {
             return back()->with('failed', "The link you followed was broken");
         }
+    }
+
+    public function updateComment(Request $request, $id)
+    {        
+        $comment = Comment::find($id);
+        $comment->user_comment = $request->user_comment;
+        $comment->update();                
+
+        return back();
     }
 
     public function deleteComment($id)

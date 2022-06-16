@@ -30,7 +30,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/trix.css') }}">
     <script type="text/javascript" src="{{ asset('/js/trix.js') }}"></script>
 
-    <title>@yield('title')</title>
+    <style>
+        /* Menonaktifkan fitur trix-editor */
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
+    <title>{{ $content_title }}</title>
 
 </head>
 
@@ -70,7 +77,7 @@
 
     {{-- My Script --}}
     <script src="{{ asset('js/my-script/admin.js') }}"></script>
-    <script src="{{ asset('js/my-script/post.js') }}"></script>
+    @yield('upload-image-script')
 
     {{-- Sweetalert2 --}}
     <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
@@ -79,6 +86,11 @@
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
     <script>
+        document.addEventListener('trix-file-accept', function(e) {
+            e.preventDefault()
+        })
+        
+        
         @if (session('success'))
             Swal.fire({
                 position: 'top-end',

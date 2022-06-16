@@ -20,6 +20,22 @@ $(document).ready(function() {
             },
         },
     });
+
+    // Passing data to edit comment modal
+    $('.edit-comment').on('click', function() {
+        $.ajax({
+            url: `/comments/detail/${$(this).val()}`,
+            type: 'GET',
+            success: ({ data }) => {
+                $('#edit-form').attr('action', `/comments/update/${data.id}`)
+                $('#edit-user_comment').val(data.user_comment)
+                $('#trix-editor-comment').val(data.user_comment)
+            }
+        })
+    })
+
+
+
 });
 
 // DarkMode Toggle

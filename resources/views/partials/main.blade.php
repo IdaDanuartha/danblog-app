@@ -27,6 +27,13 @@
     {{-- Owl Carousel --}}
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+
+    <style>
+        /* Menonaktifkan fitur trix-editor */
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="dark:bg-gray-700 overflow-x-hidden">
@@ -56,6 +63,10 @@
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
     <script>
+        document.addEventListener('trix-file-accept', function(e) {
+            e.preventDefault()
+        })
+        
         @if (session('success'))
             Swal.fire({
                 position: 'top-end',

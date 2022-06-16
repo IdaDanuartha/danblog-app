@@ -82,3 +82,31 @@ body {
   filter: brightness(85%);
   background-attachment: fixed;
 }
+
+/* Upload PP Style */
+.user-upload-image .file-upload {
+  display: none;
+}
+
+.user-upload-image .p-image {
+  position: relative;
+  left: 80px;
+  top: -122px;
+  font-size: 1.8em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.user-upload-image .p-image:hover {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.user-upload-image .upload-button {
+  font-size: 1.2em;
+  color: #eee;
+}
+
+.user-upload-image .upload-button:hover {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: #ccc;
+}

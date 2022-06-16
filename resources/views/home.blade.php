@@ -25,8 +25,7 @@
 
                     @auth
                         <a href="/blogs"
-                            class="focus:outline-none text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-md px-6 py-3 mb-2 text-xl dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-700">Explore
-                            My Blogs</a>
+                            class="focus:outline-none text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-md px-6 py-3 mb-2 text-xl dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-700">Jelajahi Blog Saya</a>
                     @endauth
 
                 </div>

@@ -1,7 +1,7 @@
 @extends('partials.main')
 
 @section('title')
-    Detail Article
+    {{ $post->title }}
 @endsection
 
 @section('content')
@@ -10,7 +10,11 @@
             <div
                 class="mr-7 basis-full lg:basis-2/3 xl:basis-3/4 dark:bg-gray-800 dark:text-white sm:rounded-lg sm:shadow-lg sm:border sm:border-gray-200 dark:border-0 mt-[50px] p-7">
                 <div class="flex border-b border-gray-400 pb-5 mb-10">
-                    <img class="rounded-full" width="50" src="https://picsum.photos/100" alt="">
+                    @if ($post->author->image)
+                            <img class="rounded-full" src="/uploads/users/{{ $post->author->image }}" width="50" height="50">
+                    @else
+                        <img class="rounded-full" src="{{ asset('img/user-profile.png') }}" width="50" height="50">
+                    @endif
                     <div class="ml-5 items-center">
                         <h3 class="text-lg font-medium">{{ $post->author->username }}
                             <p class="text-sm"><i class="fa-solid fa-clock mr-1 text-indigo-500"></i>
@@ -26,7 +30,7 @@
                             <a href="#comments" class="mr-5"><i
                                     class="fa-solid fa-comment-dots text-indigo-500"></i> {{ $user_comments->count() }}
                                 Komentar</a>
-                            <a href="#" class="text-indigo-600">#{{ $post->category->slug }}</a>
+                            <a href="/blogs?category={{ $post->category->slug }}" class="text-indigo-600 dark:text-indigo-400">#{{ $post->category->slug }}</a>
                         </div>
                         <div class="body">
                             {!! $post->body !!}
@@ -127,7 +131,7 @@
                                 </div>
                                 <div class="ml-4">
                                     @if($item->user_id == auth()->id())
-                                        <button data-bs-toggle="modal" data-bs-target="#edit-comment-modal">
+                                        <button class="edit-comment" value="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">
                                             <i class="duration-200 hover:scale-80 fas fa-pencil text-blue-600 dark:text-blue-400"></i>
                                         </button>
                                         <form class="inline" action="/comments/delete/{{ $item->id }}" method="POST">

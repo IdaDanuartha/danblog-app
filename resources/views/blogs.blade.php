@@ -5,16 +5,29 @@
 @endsection
 
 @section('content')
-    <div class="">
+    <div class="hidden lg:block">
         <img src="{{ asset('img/black-bg.jpg') }}" alt="" width="100%">
-        <div class=" absolute top-[150px] left-[40%] text-white">
+        <div class=" absolute top-[170px] left-[40%] text-white">
             <h1 class="font-semibold text-5xl">All Blogs</h1>
         </div>
     </div>
 
-    <div class="container mx-auto mt-[100px]">
+    <div class="container mx-auto pt-[120px] lg:-mt-10">
 
-        <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        @if (request('query') || request('category'))
+            <div class="pl-5">
+                <h1 class="text-gray-800 dark:text-gray-200 text-lg md:text-xl lg:text-2xl">
+                    <i
+                        class="text-gray-800 dark:text-gray-200 fa-solid fa-fire-flame-curved mr-3"></i> Terdapat <span
+                        class="font-semibold text-indigo-500 dark:text-indigo-400">{{ $blogs->count() }}</span> Artikel
+                        @if(request('query')) Untuk Pencarian <span
+                        class="font-semibold text-indigo-500 dark:text-indigo-400">"{{ request('query') }}"</span> @endif                        
+                        @if(request('category')) Dalam Category <span
+                        class="font-semibold text-indigo-500 dark:text-indigo-400">"{{ request('category') }}"</span>   @endif
+                </h1>
+            </div>
+        @endif
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach ($blogs as $item)
                 <div
                     class="m-5 item max-w-lg sm:max-w-xs bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">

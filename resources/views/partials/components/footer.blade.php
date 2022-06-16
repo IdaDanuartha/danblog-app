@@ -19,6 +19,16 @@
                     <li class="mb-4">
                         <a href="/about" class="hover:underline">About</a>
                     </li>
+                    @guest
+                        <li class="mb-4">
+                            <button class="hover:underline" data-modal-toggle="authentication-modal">Login</button>
+                        </li>
+                    @endguest
+                    @auth
+                        <li class="mb-4">
+                            <a href="logout" class="hover:underline">Logout</button>
+                        </li>
+                    @endauth
                 </ul>
             </div>
             <div>

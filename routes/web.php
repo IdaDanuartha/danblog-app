@@ -51,11 +51,12 @@ Route::middleware(['auth', 'isAdmin'])->group(function() {
 
 Route::controller(CommentController::class)->group(function() {
     Route::middleware('auth')->group(function() {
+        Route::get('/comments/detail/{id}', 'detailComment');
         Route::post('/comments/create', 'addComment');
+        Route::put('/comments/update/{id}', 'updateComment');
         Route::delete('/comments/delete/{id}', 'deleteComment');
     });
 });
-
 
 Route::fallback(function () {
     return view('404-page');

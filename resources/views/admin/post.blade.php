@@ -25,13 +25,9 @@
                     <button data-bs-toggle="modal" data-bs-target="#editPostModal"
                         class="focus:outline-none text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-6 py-2 mr-4 dark:bg-orange-500 dark:hover:bg-orange-600 dark:focus:ring-orange-800"><i
                             class="fa-solid fa-pen-to-square mr-2"></i> Edit</button>
-                    <form class="inline" action="/admin/posts/{{ $post->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
+                        <button type="button"
                             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-6 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><i
-                                class="fa-solid fa-trash mr-2"></i> Delete</a>
-                    </form>
+                                class="fa-solid fa-trash mr-2" data-modal-toggle="popup-modal"></i> Delete</a>
                 </div>
             </div>
         </div>
@@ -42,6 +38,9 @@
             </div>
         </div>
     </div>
+      
+      
 
     @include('admin.components.modal.edit-post-modal')
+    @include('admin.components.modal.delete-confirmation')                        
 @endsection
